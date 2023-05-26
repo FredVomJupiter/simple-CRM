@@ -4,8 +4,8 @@
       Placeholder for logo
     </div>
     <ul class="sidenav-list">
-      <li><mat-icon>fact_check</mat-icon>Dashboard</li>
-      <li><mat-icon>perm_identity</mat-icon>User</li>
+      <li routerLink="/dashboard"><mat-icon >fact_check</mat-icon>Dashboard</li>
+      <li routerLink="/user"><mat-icon >perm_identity</mat-icon>User</li>
     </ul>
   </mat-drawer>
 
@@ -19,7 +19,10 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
+  </div>
 
+  <div class="router-container">
+    <router-outlet></router-outlet>
   </div>
 
 </mat-drawer-container>

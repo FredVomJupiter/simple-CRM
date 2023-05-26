@@ -1,4 +1,5 @@
 export const environment = {
+  production: false,
   firebase: {
     projectId: 'simple-crm-a3a5e',
     appId: '1:820482635186:web:d7baa23e92801e306fe0ab',

@@ -20,4 +20,18 @@ export class User {
         this.email = obj ? obj.email : '';
         this.telephone = obj ? obj.telephone : 0;
     }
+
+    public toJSON() {
+        return {
+            company: this.company,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            address: this.address,
+            postalCode: this.postalCode,
+            city: this.city,
+            state: this.state,
+            email: this.email,
+            telephone: this.telephone
+        };
+    }
 }

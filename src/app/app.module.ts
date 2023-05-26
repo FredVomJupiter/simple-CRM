@@ -17,10 +17,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore())
   ],
   providers: [],

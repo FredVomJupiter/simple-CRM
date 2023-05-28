@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
     AppComponent,
     DashboardComponent,
     UserComponent,
-    DialogAddUserComponent
+    DialogAddUserComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<mat-card>
+
+    <mat-card-content>
+        <div class="header">
+            <img src="/../assets/profile.png" alt="profile">
+        </div>
+        <svg class="orange-style">
+            <polygon points="0 0, 100 100, 100 100, 200 0" viewBox="0 0 100 100" style="fill: orange"/>
+        </svg>
+        <div class="main">
+            <div class="grid light-font" *ngIf="users"> <!-- ngIf query if users exist, otherwise it is undefined when initializing before subscription and throws an error -->
+                <div>{{users.firstName}} {{users.lastName}}</div>
+                <div>{{users.email}}</div>
+                <div>Company: {{users.company}}</div>
+                <div>Phone: {{users.telephone}}</div>
+
+                <div>Address:</div>
+                <div>{{users.address}}</div>
+                <div>{{users.postalCode}}, {{users.city}} ({{users.state}})</div>
+            </div>
+        </div>
+    </mat-card-content>
+
+</mat-card>

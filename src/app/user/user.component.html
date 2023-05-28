@@ -10,7 +10,7 @@
     </mat-card-content>
 </mat-card>
 
-<mat-card *ngFor="let user of users" class="hover">
+<mat-card *ngFor="let user of users" class="hover" [routerLink]="['/user/' + user.userId]">
     <mat-card-content>
         <div class="grid">
             <div class="grey overflow">{{user.firstName}}</div>

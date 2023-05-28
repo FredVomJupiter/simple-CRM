@@ -44,6 +44,19 @@ mat-toolbar, mat-toolbar-row {
 }
 
 .router-container {
-    padding-left: 4rem;
-    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.logo {
+    width: 150px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .router-container {
+        padding-left: 0;
+    }
 }

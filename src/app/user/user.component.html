@@ -1,6 +1,16 @@
-<button (click)="openDialog()" class="add-user-button" mat-fab matTooltip="Add user"
-    matTooltipPosition="above"
-    matTooltipHideDelay="225" color="primary"
-    aria-label="FAB icon for adding user">
+<mat-card *ngFor="let user of users">
+    <mat-card-content>
+        First name:
+        {{user.firstName}}
+        Last name:
+        {{user.lastName}}
+        Email:
+        {{user.email}}
+
+    </mat-card-content>
+</mat-card>
+
+<button (click)="openDialog()" class="add-user-button" mat-fab matTooltip="Add user" matTooltipPosition="above"
+    matTooltipHideDelay="225" color="primary" aria-label="FAB icon for adding user">
     <mat-icon>add</mat-icon>
 </button>

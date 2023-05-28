@@ -3,18 +3,18 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Company</mat-label>
-    <input matInput [(ngModel)]="user.company">
+    <input [disabled]="loading" matInput [(ngModel)]="user.company">
   </mat-form-field>
 
   <table class="example-full-width" cellspacing="0">
     <tr>
       <td><mat-form-field class="example-full-width">
           <mat-label>First name</mat-label>
-          <input matInput placeholder="Dieter" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+          <input [disabled]="loading" matInput placeholder="Dieter" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
         </mat-form-field></td>
       <td><mat-form-field class="example-full-width">
           <mat-label>Last Name</mat-label>
-          <input matInput placeholder="Hallervorden" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
+          <input [disabled]="loading" matInput placeholder="Hallervorden" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
         </mat-form-field></td>
     </tr>
   </table>
@@ -22,7 +22,7 @@
   <p>
     <mat-form-field class="example-full-width">
       <mat-label>Address</mat-label>
-      <textarea matInput placeholder="Ex. 100 Main St" [(ngModel)]="user.address"></textarea>
+      <textarea [disabled]="loading" matInput placeholder="Ex. 100 Main St" [(ngModel)]="user.address"></textarea>
     </mat-form-field>
   </p>
 
@@ -30,15 +30,15 @@
     <tr>
       <td><mat-form-field class="example-full-width">
           <mat-label>City</mat-label>
-          <input matInput placeholder="Ex. San Francisco" [(ngModel)]="user.city">
+          <input [disabled]="loading" matInput placeholder="Ex. San Francisco" [(ngModel)]="user.city">
         </mat-form-field></td>
       <td><mat-form-field class="example-full-width">
           <mat-label>State</mat-label>
-          <input matInput placeholder="Ex. California" [(ngModel)]="user.state">
+          <input [disabled]="loading" matInput placeholder="Ex. California" [(ngModel)]="user.state">
         </mat-form-field></td>
       <td><mat-form-field class="example-full-width">
           <mat-label>Postal Code</mat-label>
-          <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" [(ngModel)]="user.postalCode">
+          <input [disabled]="loading" matInput #postalCode maxlength="5" placeholder="Ex. 94105" [(ngModel)]="user.postalCode">
           <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
         </mat-form-field></td>
     </tr>
@@ -48,7 +48,7 @@
     <tr>
       <td><mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
-          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
+          <input [disabled]="loading" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
             [(ngModel)]="user.email">
           <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             Please enter a valid email address
@@ -61,15 +61,18 @@
       <td><mat-form-field class="example-full-width">
           <mat-label>Telephone</mat-label>
           <span matPrefix>+1 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234" [(ngModel)]="user.telephone">
+          <input [disabled]="loading" type="tel" matInput placeholder="555-555-1234" [(ngModel)]="user.telephone">
           <mat-icon matSuffix>mode_edit</mat-icon>
         </mat-form-field></td>
     </tr>
   </table>
 
   <div mat-dialog-actions>
-    <button mat-button mat-dialog-close="">Cancel</button>
-    <button mat-button [mat-dialog-close]="" (click)="saveUser()" cdkFocusInitial>Save</button>
+    <button [disabled]="loading" mat-button mat-dialog-close="">Cancel</button>
+    <button [disabled]="loading" mat-button [mat-dialog-close]="" (click)="saveUser()" cdkFocusInitial>Save</button>
   </div>
+
+  <mat-progress-bar mode="indeterminate" [class.d-none]="!loading"></mat-progress-bar>
+
 
 </div>

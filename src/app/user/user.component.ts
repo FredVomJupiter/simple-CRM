@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
-import { User } from '../models/user.class';
 // WICHTIG! es muss von @angular/fire/firestore importiert werden, sonst Nullinjectorfehler
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { DocumentData, Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
+export class UserComponent implements AfterViewInit {
 
-  user: User = new User();
+  users: any;
 
   constructor(private dialog: MatDialog, private firestore: Firestore) {
     
@@ -22,6 +21,9 @@ export class UserComponent {
     this.loadUser();
   }
 
+  ngAfterViewInit(): void {
+  }
+
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }
@@ -29,7 +31,7 @@ export class UserComponent {
   loadUser() {
     const collectionInstance = collection(this.firestore, 'users');
     collectionData(collectionInstance).subscribe((users) => {
-      console.log(users);
+      this.users = users;
     });
   }
 }

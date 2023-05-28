@@ -1,15 +1,24 @@
-<mat-card *ngFor="let user of users">
+<mat-card>
     <mat-card-content>
-        First name:
-        {{user.firstName}}
-        Last name:
-        {{user.lastName}}
-        Email:
-        {{user.email}}
-        Company:
-        {{user.company}}
-        City:
-        {{user.city}}
+        <div class="grid light-font">
+            <div>First Name</div>
+            <div>Last Name</div>
+            <div>Email</div>
+            <div>Company</div>
+            <div>City</div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngFor="let user of users" class="hover">
+    <mat-card-content>
+        <div class="grid">
+            <div class="grey overflow">{{user.firstName}}</div>
+            <div class="grey overflow">{{user.lastName}}</div>
+            <div class="blue overflow">{{user.email}}</div>
+            <div class="green overflow">{{user.company}}</div>
+            <div class="orange overflow">{{user.city}}</div>
+        </div>
     </mat-card-content>
 </mat-card>
 

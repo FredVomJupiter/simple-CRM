@@ -4,9 +4,49 @@
     bottom: 4rem;
 }
 
-
 mat-card {
-    margin: 1rem;
-    width: 80%;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(50px, 1fr));
     gap: 1rem;
+    overflow: hidden;
+}
+
+.overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.light-font {
+    color: #999;
+}
+
+.hover {
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eee;
+    }
+}
+
+.orange {
+    color: orange;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.grey {
+    color: grey;
 }

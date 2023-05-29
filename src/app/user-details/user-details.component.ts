@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { collectionData, Firestore, collection } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 
 @Component({
   selector: 'app-user-details',
@@ -10,10 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailsComponent {
 
   userId!: string;
-  users: any;
+  user: any;
 
 
-  constructor(private route: ActivatedRoute, private firestore: Firestore) { }
+  constructor(private route: ActivatedRoute, private firestore: Firestore, private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -32,10 +35,21 @@ export class UserDetailsComponent {
 
       for (const user of users) {
         if (user['userId'] === this.userId) {
-          this.users = user;
+          this.user = user;
         }
       }
     });
   }
 
+
+  editUser() {
+    let dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = this.user;
+  }
+
+
+  editAddress() {
+    let dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.user = this.user;
+  }
 }

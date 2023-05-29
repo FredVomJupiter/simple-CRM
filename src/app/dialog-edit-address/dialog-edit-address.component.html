@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Edit Address</h1>
+<div mat-dialog-content>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <textarea [disabled]="loading" matInput placeholder="Ex. 100 Main St" [(ngModel)]="user.address"></textarea>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>City</mat-label>
+          <input [disabled]="loading" matInput placeholder="Ex. San Francisco" [(ngModel)]="user.city">
+        </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>State</mat-label>
+          <input [disabled]="loading" matInput placeholder="Ex. California" [(ngModel)]="user.state">
+        </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>Postal Code</mat-label>
+          <input [disabled]="loading" matInput #postalCode maxlength="5" placeholder="Ex. 94105" [(ngModel)]="user.postalCode">
+          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+        </mat-form-field></td>
+    </tr>
+  </table>
+
+
+  <div mat-dialog-actions>
+    <button [disabled]="loading" mat-button mat-dialog-close="">Cancel</button>
+    <button [disabled]="loading" mat-button [mat-dialog-close]="" (click)="saveAddress()" cdkFocusInitial>Save</button>
+  </div>
+
+  <mat-progress-bar mode="indeterminate" [class.d-none]="!loading"></mat-progress-bar>
+
+
+</div>

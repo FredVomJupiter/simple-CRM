@@ -2,21 +2,35 @@
 
     <mat-card-content>
         <div class="header">
+            <button mat-raised-button class="close-btn" routerLink="/user">Close</button>
             <img src="/../assets/profile.png" alt="profile">
         </div>
         <svg class="orange-style">
-            <polygon points="0 0, 100 100, 100 100, 200 0" viewBox="0 0 100 100" style="fill: orange"/>
+            <polygon points="0 0, 100 100, 100 100, 200 0" viewBox="0 0 100 100" style="fill: orange" />
         </svg>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="edit-btn">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editUser()">Edit User</button>
+            <button mat-menu-item (click)="editAddress()">Edit Address</button>
+            <button mat-menu-item>Delete</button>
+        </mat-menu>
+
+
         <div class="main">
-            <div class="grid light-font" *ngIf="users"> <!-- ngIf query if users exist, otherwise it is undefined when initializing before subscription and throws an error -->
-                <div>{{users.firstName}} {{users.lastName}}</div>
-                <div>{{users.email}}</div>
-                <div>Company: {{users.company}}</div>
-                <div>Phone: {{users.telephone}}</div>
+
+            <div class="grid light-font" *ngIf="user">
+                <!-- ngIf query if users exist, otherwise it is undefined when initializing before subscription and throws an error -->
+                <div>{{user.firstName}} {{user.lastName}}</div>
+                <div>{{user.email}}</div>
+                <div>Company: {{user.company}}</div>
+                <div>Phone: {{user.telephone}}</div>
 
                 <div>Address:</div>
-                <div>{{users.address}}</div>
-                <div>{{users.postalCode}}, {{users.city}} ({{users.state}})</div>
+                <div>{{user.address}}</div>
+                <div>{{user.postalCode}}, {{user.city}} ({{user.state}})</div>
             </div>
         </div>
     </mat-card-content>

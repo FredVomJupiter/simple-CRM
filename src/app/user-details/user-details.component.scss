@@ -40,3 +40,15 @@ mat-card-content {
     grid-gap: 1rem;
     padding: 1rem;
 }
+
+.close-btn {
+    position: relative;
+    left: calc(100% - 6rem);
+    top: 1rem;
+}
+
+.edit-btn {
+    position: relative;
+    left: calc(100% - 4rem);
+    bottom: -1rem;
+}

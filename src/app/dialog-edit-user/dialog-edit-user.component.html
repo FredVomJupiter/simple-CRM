@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Company</mat-label>
+    <input [disabled]="loading" matInput [(ngModel)]="user.company">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input [disabled]="loading" matInput placeholder="Dieter" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+        </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input [disabled]="loading" matInput placeholder="Hallervorden" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
+        </mat-form-field></td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td><mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input [disabled]="loading" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com"
+            [(ngModel)]="user.email">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field></td>
+
+      <td><mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+1 &nbsp;</span>
+          <input [disabled]="loading" type="tel" matInput placeholder="555-555-1234" [(ngModel)]="user.telephone">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field></td>
+    </tr>
+  </table>
+
+  <div mat-dialog-actions>
+    <button [disabled]="loading" mat-button mat-dialog-close="">Cancel</button>
+    <button [disabled]="loading" mat-button [mat-dialog-close]="" (click)="saveUser()" cdkFocusInitial>Save</button>
+  </div>
+
+  <mat-progress-bar mode="indeterminate" [class.d-none]="!loading"></mat-progress-bar>
+
+
+</div>

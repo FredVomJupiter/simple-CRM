@@ -14,7 +14,7 @@ import { User } from '../models/user.class';
 export class UserDetailsComponent {
 
   userId!: string;
-  user: any;
+  user!: User;
 
 
   constructor(private route: ActivatedRoute, private firestore: Firestore, private dialog: MatDialog) { }
@@ -30,13 +30,12 @@ export class UserDetailsComponent {
 
 
   loadUserData() {
-    console.log(this.userId);
     const collectionInstance = collection(this.firestore, 'users');
     collectionData(collectionInstance, {idField: 'userId'}).subscribe((users) => {
 
       for (const user of users) {
         if (user['userId'] === this.userId) {
-          this.user = user;
+          this.user = new User(user);
         }
       }
     });
@@ -46,11 +45,13 @@ export class UserDetailsComponent {
   editUser() {
     let dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON()); // creates a copy of the user object and injects it into the constructer of User.
+    dialog.componentInstance.userId = this.userId; // passes the userId to the dialog.
   }
 
 
   editAddress() {
     let dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userId = this.userId;
   }
 }

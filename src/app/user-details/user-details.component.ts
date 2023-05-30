@@ -30,7 +30,9 @@ export class UserDetailsComponent {
     this.loadUserData();
   }
 
-
+  /**
+   * cRud - Read
+   */
   loadUserData() {
     const collectionInstance = collection(this.firestore, 'users');
     collectionData(collectionInstance, { idField: 'userId' }).subscribe((users) => {
@@ -43,21 +45,27 @@ export class UserDetailsComponent {
     });
   }
 
-
+  /**
+   * crUd - Update
+   */
   editUser() {
     let dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON()); // creates a copy of the user object and injects it into the constructer of User.
     dialog.componentInstance.userId = this.userId; // passes the userId to the dialog.
   }
 
-
+  /**
+   * crUd -Update
+   */
   editAddress() {
     let dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
   }
 
-
+  /**
+   * cruD - Delete
+   */
   deleteUser() {
     const docInstance = doc(this.firestore, 'users', this.userId);
     this.message = 'User deleted: ' + this.user.firstName + ' ' + this.user.lastName;

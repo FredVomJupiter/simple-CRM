@@ -21,6 +21,9 @@ export class DialogEditUserComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
 
+  /**
+   * crUd - Update
+   */
   saveUser() {
     const docInstance = doc(this.firestore, 'users', this.userId); // creates a reference to the document in the database.
     this.loading = true;

@@ -24,6 +24,10 @@ export class DialogAddUserComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
+
+  /**
+   * Crud - Create
+   */
   saveUser() {
     this.loading = true;
     const collectionInstance = collection(this.firestore, 'users');
@@ -31,7 +35,7 @@ export class DialogAddUserComponent implements OnInit {
       this.loading = false;
       this.dialogRef.close();
     }).catch((error) => {
-      console.log(error);
+      alert(error);
     });
   }
 }

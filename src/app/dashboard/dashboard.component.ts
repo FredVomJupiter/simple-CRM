@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Company } from '../models/company.class'; 
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 export class DashboardComponent {
 
   users!: any;
-  companies: any;
+  companies!: any;
 
   constructor(private firestore: Firestore) {
     this.loadUserData();
@@ -41,7 +42,7 @@ export class DashboardComponent {
    */
   startCountingProcess(companies: Array<string>) {
     let names: string[] = [];
-    let counter: any = [];
+    let counter: object[] = [];
     names = this.createListOfUniqueCompanyNames(companies, names);
     counter = this.createCounterTemplate(counter, names);
     counter = this.countCompanies(companies, counter);
@@ -59,15 +60,15 @@ export class DashboardComponent {
   }
 
 
-  createCounterTemplate(counter: any[], names: string[]) {
+  createCounterTemplate(counter: object[], names: string[]) {
     names.forEach((company: string) => {
-      counter.push({ name: company, count: 0 });
+      counter.push(new Company(company));
     });
     return counter;
   }
 
 
-  countCompanies(companies: Array<string>, counter: any[]) {
+  countCompanies(companies: Array<string>, counter: object[]) {
     companies.forEach((company: string) => {
       counter.forEach((item: any) => {
         if (item.name === company) {

@@ -20,4 +20,8 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return an object with company names and their count', () => {
+    expect(component.startCountingProcess(['company1', 'company2', 'company1', 'company3'])).toEqual({ company1: 2, company2: 1, company3: 1 });
+  });
 });

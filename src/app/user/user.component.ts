@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 // WICHTIG! es muss von @angular/fire/firestore importiert werden, sonst Nullinjectorfehler
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { DeleteMessageService } from '../delete-message.service';
+import { DeleteMessageService } from '../services/delete-message.service';
 
 @Component({
   selector: 'app-user',

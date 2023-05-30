@@ -4,6 +4,11 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * This service is used to pass a message from the user-details component to the user-component
+ * after a successful deletion of a user.
+ */
 export class DeleteMessageService {
 
   private  message = new Subject<string>();

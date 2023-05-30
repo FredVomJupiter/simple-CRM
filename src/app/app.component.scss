@@ -10,7 +10,7 @@
     box-sizing: border-box;
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.2);
     padding: 1rem;
-    min-height: 56px;
+    max-height: 56px;
     display: flex;
     align-items: center;
 }
@@ -56,6 +56,8 @@ mat-toolbar, mat-toolbar-row {
 }
 
 @media screen and (max-width: 600px) {
-
+    .sidenav {
+        width: 190px;
+    }
 
 }

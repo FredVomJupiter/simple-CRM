@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<mat-card>
+    <mat-card-title>Dashboard</mat-card-title>
+    <mat-card-content>
+
+        <div class="column">
+            <span clasS="subtitle"> In total {{ users?.length }} users are registered.</span>
+
+            <span class="subtitle"> Users by company: </span>
+            <div *ngFor="let company of companies">
+                <span class="green"> {{ company.count }} - {{ company.name === ''? "No company specified" : company.name }} </span>
+            </div>
+        </div>
+        
+
+
+    </mat-card-content>
+</mat-card>

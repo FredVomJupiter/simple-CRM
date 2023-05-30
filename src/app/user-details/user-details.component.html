@@ -15,7 +15,7 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="editUser()">Edit User</button>
             <button mat-menu-item (click)="editAddress()">Edit Address</button>
-            <button mat-menu-item>Delete</button>
+            <button mat-menu-item (click)="deleteUser()" routerLink="/user">Delete User</button>
         </mat-menu>
 
 

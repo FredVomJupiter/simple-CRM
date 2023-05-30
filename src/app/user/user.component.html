@@ -22,6 +22,14 @@
     </mat-card-content>
 </mat-card>
 
+<mat-card *ngIf="message != ''" class="delete-message">
+    <mat-card-content>
+        <div>
+            <p>{{ message }}</p>
+        </div>
+    </mat-card-content>
+</mat-card>
+
 <button (click)="openDialog()" class="add-user-button" mat-fab matTooltip="Add user" matTooltipPosition="above"
     matTooltipHideDelay="225" color="primary" aria-label="FAB icon for adding user">
     <mat-icon>add</mat-icon>

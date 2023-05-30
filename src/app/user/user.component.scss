@@ -35,6 +35,16 @@ mat-card {
     }
 }
 
+.delete-message {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 50px;
+    top: calc(50% - 25px);
+    left: calc(50% - 75px);
+}
+
 .orange {
     color: orange;
 }

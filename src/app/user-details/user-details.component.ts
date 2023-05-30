@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { collectionData, Firestore, collection } from '@angular/fire/firestore';
+import { collectionData, Firestore, collection, doc, deleteDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { User } from '../models/user.class';
+import { DeleteMessageService } from '../delete-message.service';
 
 @Component({
   selector: 'app-user-details',
@@ -15,9 +16,10 @@ export class UserDetailsComponent {
 
   userId!: string;
   user!: User;
+  message: string = '';
 
 
-  constructor(private route: ActivatedRoute, private firestore: Firestore, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private firestore: Firestore, private dialog: MatDialog, private messageService: DeleteMessageService) { }
 
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class UserDetailsComponent {
 
   loadUserData() {
     const collectionInstance = collection(this.firestore, 'users');
-    collectionData(collectionInstance, {idField: 'userId'}).subscribe((users) => {
+    collectionData(collectionInstance, { idField: 'userId' }).subscribe((users) => {
 
       for (const user of users) {
         if (user['userId'] === this.userId) {
@@ -53,5 +55,17 @@ export class UserDetailsComponent {
     let dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userId = this.userId;
+  }
+
+
+  deleteUser() {
+    const docInstance = doc(this.firestore, 'users', this.userId);
+    this.message = 'User deleted: ' + this.user.firstName + ' ' + this.user.lastName;
+    deleteDoc(docInstance).then(() => {
+      this.messageService.setMessage(this.message);
+    }).catch((error) => {
+      this.messageService.setMessage('Error deleting user: ' + error);
+    }
+    );
   }
 }

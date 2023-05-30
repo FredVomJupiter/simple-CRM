@@ -44,3 +44,10 @@ mat-card {
     top: calc(50% - 25px);
     left: calc(50% - 75px);
 }
+
+@media screen and (max-width: 600px) {
+    .add-user-button {
+        right: 1rem;
+        bottom: 1rem;
+    }
+}

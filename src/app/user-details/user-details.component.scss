@@ -12,22 +12,13 @@ mat-card-content {
         position: absolute;
         width: 100px;
         height: 100px;
-        left: calc(50% - 50px);
-        top: 150px;
+        left: 1rem;
+        top: calc(100px - 1rem);
         z-index: 2;
     }
 }
 
-.orange-style {
-    position: absolute;
-    width: min(100%, 200px);
-    height: 100px;
-    left: calc(50% - 100px);
-    z-index: 1;
-}
-
 .main {
-    margin-top: 100px;
     position: relative;
     background: #fff;
     width: 100%;
@@ -51,4 +42,19 @@ mat-card-content {
     position: relative;
     left: calc(100% - 4rem);
     bottom: -1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        height: 150px;
+
+        img {
+            width: 50px;
+            height: 50px;
+            left: 1rem;
+            top: calc(100px - 1rem);
+        }
+    }
+
+   
 }

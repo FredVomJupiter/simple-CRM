@@ -1,12 +1,18 @@
+/** Modules */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+/** Components */
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
 import { DialogAddUserComponent } from './dialog-add-user/dialog-add-user.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /** Material Modules */
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,9 +33,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
-import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
+
 
 
 @NgModule({
